@@ -470,7 +470,7 @@ class MailAlerts extends Module
 		$id_product_attribute = 0;
 		$id_customer = (int)$context->customer->id;
 
-		if ((int)$context->customer->id <= 0)
+		if ((int)!$context->customer->isLogged())
 			$this->context->smarty->assign('email', 1);
 		elseif (MailAlert::customerHasNotification($id_customer, $id_product, $id_product_attribute, (int)$context->shop->id))
 			return;
